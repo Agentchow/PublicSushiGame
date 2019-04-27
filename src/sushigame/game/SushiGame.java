@@ -13,6 +13,7 @@ public class SushiGame {
 		SushiGameModel game_model = new SushiGameModel(20, 5, 4);
 		SushiGameView game_view = new SushiGameView(game_model);
 		SushiGameController game_controller = new SushiGameController(game_model, game_view);
+		int i =0;
 		
 		JFrame main_frame = new JFrame();
 		main_frame.setTitle("KMP Dreams Of Sushi");
