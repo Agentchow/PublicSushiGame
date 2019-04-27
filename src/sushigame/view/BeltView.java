@@ -34,12 +34,20 @@ public class BeltView extends JPanel implements BeltObserver {
 		refresh();
 	}
 
-	@Override
+	
+	
 	public void handleBeltEvent(BeltEvent e) {	
 		refresh();
 	}
 
 	private void refresh() {
+		for (int i = 0; i<belt.getSize(); i++) {
+			belt_labels[i].setBackground(Color.GRAY);
+			belt_labels[i].removeAll();
+			this.validate();
+		}
+		
+		
 		for (int i=0; i<belt.getSize(); i++) {
 			Plate p = belt.getPlateAtPosition(i);
 			JLabel plabel = belt_labels[i];
@@ -48,7 +56,11 @@ public class BeltView extends JPanel implements BeltObserver {
 				plabel.setText("");
 				plabel.setBackground(Color.GRAY);
 			} else {
-				plabel.setText(p.toString());
+				//plabel.setText(p.toString());
+				plabel.addMouseListener(new MouseListenerImpl(belt, i));
+				plabel.setText("~CLICK ME FOR INFO~");
+				
+				
 				switch (p.getColor()) {
 				case RED:
 					plabel.setBackground(Color.RED); break;

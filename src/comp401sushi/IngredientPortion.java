@@ -3,6 +3,7 @@ package comp401sushi;
 public interface IngredientPortion {
 
 	Ingredient getIngredient();
+	
 	double getAmount();
 	IngredientPortion combine(IngredientPortion other);
 	

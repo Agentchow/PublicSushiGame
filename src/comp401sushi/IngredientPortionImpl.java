@@ -6,9 +6,9 @@ abstract public class IngredientPortionImpl implements IngredientPortion {
 	private Ingredient ingredient;
 
 	protected IngredientPortionImpl(double amount, Ingredient ingredient) {
-		if (amount <= 0.0) {
-			throw new RuntimeException("Amount of ingredient portion must be greater than 0.0");
-		}
+//		if (amount <= 0.0) {
+//			throw new RuntimeException("Amount of ingredient portion must be greater than 0.0");
+//		}
 		
 		this.amount = amount;
 		this.ingredient = ingredient;

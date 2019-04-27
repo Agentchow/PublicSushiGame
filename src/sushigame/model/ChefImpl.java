@@ -17,9 +17,12 @@ public class ChefImpl implements Chef, BeltObserver {
 	private String name;
 	private ChefsBelt belt;
 	private boolean already_placed_this_rotation;
+	private double weight;	
+	private double spoilWeight;
 	
 	public ChefImpl(String name, double starting_balance, ChefsBelt belt) {
 		this.name = name;
+		this.weight = 0;
 		this.balance = starting_balance;
 		this.belt = belt;
 		belt.registerBeltObserver(this);
@@ -80,13 +83,24 @@ public class ChefImpl implements Chef, BeltObserver {
 		if (e.getType() == BeltEvent.EventType.PLATE_CONSUMED) {
 			Plate plate = ((PlateEvent) e).getPlate();
 			if (plate.getChef() == this) {
+				
 				balance += plate.getPrice();
+				for (int i=0; i<plate.getContents().getIngredients().length; i++) {
+					weight += plate.getContents().getIngredients()[i].getAmount();
+				}
+				
 				Customer consumer = belt.getCustomerAtPosition(((PlateEvent) e).getPosition());
 				plate_history.add(new HistoricalPlateImpl(plate, consumer));
 			}
 		} else if (e.getType() == BeltEvent.EventType.PLATE_SPOILED) {
 			Plate plate = ((PlateEvent) e).getPlate();
 			plate_history.add(new HistoricalPlateImpl(plate, null));
+			if (plate.getChef() == this) {
+
+			for (int i=0; i<plate.getContents().getIngredients().length; i++) {
+				spoilWeight += plate.getContents().getIngredients()[i].getAmount();
+			}
+			}
 		} else if (e.getType() == BeltEvent.EventType.ROTATE) {
 			already_placed_this_rotation = false;
 		}
@@ -96,4 +110,15 @@ public class ChefImpl implements Chef, BeltObserver {
 	public boolean alreadyPlacedThisRotation() {
 		return already_placed_this_rotation;
 	}
+
+	@Override
+	public double getWeight() {
+		
+		return weight;
+	}
+	
+	public double getSpoilWeight() {
+		return spoilWeight;
+	}
+	
 }

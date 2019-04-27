@@ -17,7 +17,7 @@ abstract public class PlateImpl implements Plate {
 		if (chef == null) {
 			throw new IllegalArgumentException();
 		}
-		
+
 		if (s.getCost() > price) {
 			throw new PlatePriceException(this, s);
 		}

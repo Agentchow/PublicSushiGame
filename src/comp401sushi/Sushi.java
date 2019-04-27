@@ -2,6 +2,8 @@ package comp401sushi;
 
 public interface Sushi {
 
+	
+	
 	String getName();
 	IngredientPortion[] getIngredients();
 	int getCalories();
@@ -9,4 +11,6 @@ public interface Sushi {
 	boolean getHasRice();
 	boolean getHasShellfish();
 	boolean getIsVegetarian();
+	
+	
 }
