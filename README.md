@@ -1,3 +1,5 @@
+Needs a better/robust score board Impl
+
 ## Dreams of Sushi: The Game
 
 This code contains a complete, functional sushi restaurant game. You should be able to run and play the game starting from the class ```sushigame.game.SushiGame```. You should see an interface that includes a scoreboard, a visualization of a sushi belt, an interface for creating a few specific types of sushi on specific plate colors placed nearest to a specific position, a rotate button, and a message area where error messages are displayed. 
