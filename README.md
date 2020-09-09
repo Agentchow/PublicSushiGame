@@ -1,4 +1,4 @@
-Needs a better/robust score board Impl
+Needs a better/robust score board Impl | MVC Design Pattern
 
 ## Dreams of Sushi: The Game
 
